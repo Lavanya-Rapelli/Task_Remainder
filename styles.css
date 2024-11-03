@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #4facfe, #00f2fe); /* Gradient background */
+    background: linear-gradient(to right, #4facfe, #00f2fe);
     margin: 0;
     padding: 20px;
 }
@@ -10,8 +10,8 @@ body {
     margin: auto;
     background: white;
     padding: 30px;
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -23,21 +23,19 @@ h1 {
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Increased gap for better spacing */
+    gap: 15px;
 }
 
-input[type="text"],
-input[type="datetime-local"] {
-    padding: 12px; /* Increased padding for better touch */
+input[type="text"], input[type="datetime-local"] {
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    transition: border-color 0.3s; /* Smooth transition */
+    transition: border-color 0.3s;
 }
 
-input[type="text"]:focus,
-input[type="datetime-local"]:focus {
-    border-color: #4facfe; /* Highlight on focus */
+input[type="text"]:focus, input[type="datetime-local"]:focus {
+    border-color: #4facfe;
     outline: none;
 }
 
@@ -49,22 +47,22 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s; /* Add transform effect */
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly enlarge button */
+    background-color: #218838;
+    transform: scale(1.05);
 }
 
 .reminders {
-    margin-top: 30px; /* Increased margin for breathing space */
+    margin-top: 30px;
 }
 
 .reminders h2 {
     text-align: center;
-    color: black; /* Blue header for reminders */
-    font-size: 1.5em;
+    color: black;
+    font-size: 1.0em;
 }
 
 .reminders ul {
@@ -73,77 +71,82 @@ button:hover {
 }
 
 .reminders li {
-    background: #e9ecef; /* Light grey background for reminders */
+    background: #e9ecef;
     padding: 12px;
     margin: 5px 0;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.3s; /* Smooth transition on hover */
-}
-
-/* Adjust spacing between edit and delete buttons */
-.reminders li span {
-    margin-left: 10px; /* Added margin for spacing */
+    transition: background-color 0.3s;
 }
 
 .reminders li:hover {
-    background-color: #d1e7dd; /* Light green on hover */
+    background-color: #d1e7dd;
 }
 
-.edit,
-.delete {
+.edit, .delete {
     cursor: pointer;
-    color: #007bff; /* Blue for edit button */
+    color: #007bff;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .edit:hover {
     text-decoration: underline;
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3;
 }
 
 .delete:hover {
-    color: #dc3545; /* Red for delete button */
+    color: #dc3545;
+}
+.datetime-container {
+    position: relative; /* Create a positioning context */
 }
 
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
+#reminderTime {
+    width: calc(100% - 30px); /* Adjust width to account for the icon */
+}
+
+.calendar-icon {
+    position: absolute; /* Position the icon */
+    right: 10px; /* Adjust distance from the right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust vertical position */
+    font-size: 1.2em; /* Size of the icon */
+    pointer-events: none; /* Prevent interaction */
+}
+input[type="datetime-local"] {
+    width: 100%; /* Ensure it takes full width */
+    padding: 10px; /* Padding for touch targets */
+    font-size: 14px; /* Make the text readable */
+    border: 1px solid #ccc; /* Default border */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 10px; /* Spacing from the above element */
+}
+
+button {
+    margin-top: 15px; /* Spacing above the button */
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
     .container {
-        padding: 20px; /* Reduced padding on smaller screens */
+        padding: 20px;
     }
 
-    h1 {
-        font-size: 1.2em; /* Smaller heading size on mobile */
+    h1, .reminders h2 {
+        font-size: 1.0em;
     }
 
-    input[type="text"],
-    input[type="datetime-local"],
-    button {
-        font-size: 14px; /* Smaller font size for inputs and buttons */
-        padding: 10px; /* Reduced padding for smaller screens */
+    input[type="text"], input[type="datetime-local"], button {
+        font-size: 14px;
+        padding: 10px;
     }
 
-    .reminders h2 {
-        font-size: 1.3em; /* Adjusted font size for reminders */
-    }
-
-    .reminders li {
-        padding: 10px; /* Adjust padding for reminders */
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.1em; /* Further reduction for very small screens */
-    }
-
-    input[type="text"],
-    input[type="datetime-local"],
-    button {
-        font-size: 12px; /* Further reduction for very small screens */
-        padding: 8px; /* Further reduction for very small screens */
+    .form-container {
+        flex-direction: column;
+        gap: 10px;
     }
 }

@@ -84,3 +84,8 @@ function deleteReminder(index) {
     reminders.splice(index, 1); // Remove from the reminders array
     updateReminderList(); // Refresh the display
 }
+
+flatpickr("#reminderTime", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+});
