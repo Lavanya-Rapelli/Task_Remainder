@@ -113,12 +113,15 @@ button:hover {
         padding: 20px;
     }
 
-    h1, .reminders h2 {
-        font-size: 1.3em;
+    h1{
+        font-size: 1.0em;
+    } 
+    .reminders h2 {
+        font-size: 0.8em;
     }
 
     input[type="text"], input[type="datetime-local"], button {
-        font-size: 14px;
+        font-size: 10px;
         padding: 10px;
     }
 
