@@ -4,7 +4,11 @@ const reminderTime = document.getElementById('reminderTime');
 const setReminderButton = document.getElementById('setReminder');
 const reminderList = document.getElementById('reminderList');
 
-let reminders = [];
+let reminders = JSON.parse(localStorage.getItem('reminders')) || []; // Load saved reminders or start with an empty array
+
+// Initialize reminders from local storage
+reminders.forEach(reminder => scheduleReminder(reminder));
+updateReminderList();
 
 // Function to update the reminder list display
 function updateReminderList() {
@@ -16,6 +20,9 @@ function updateReminderList() {
         li.appendChild(createDeleteButton(index));
         reminderList.appendChild(li);
     });
+
+    // Save reminders to local storage whenever the list is updated
+    localStorage.setItem('reminders', JSON.stringify(reminders));
 }
 
 // Function to create edit button
@@ -59,7 +66,7 @@ function scheduleReminder(reminder) {
         alert(`Reminder: ${reminder.text}`);
         deleteReminder(reminders.indexOf(reminder)); // Remove reminder after it triggers
     }, reminder.time - Date.now());
-    
+
     reminder.timeoutId = timeoutId; // Store timeoutId for later reference
 }
 
