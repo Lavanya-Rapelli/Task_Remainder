@@ -100,6 +100,8 @@ button:hover {
 .edit, .delete {
     cursor: pointer;
     font-weight: bold;
+    width: auto;              /* Ensures button width adapts to content */
+    height: auto; 
     transition: text-decoration 0.3s;
 }
 
@@ -114,7 +116,7 @@ button:hover {
     }
 
     h1 {
-        font-size: 1.0em;
+        font-size: 1.3em;
     }
 
     .reminders h2 {
@@ -122,7 +124,7 @@ button:hover {
     }
 
     input[type="text"], input[type="datetime-local"], button {
-        font-size: 10px;
+        font-size: 14px;
         padding: 10px;
     }
 
