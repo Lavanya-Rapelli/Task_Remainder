@@ -85,6 +85,12 @@ button:hover {
     background-color: #d1e7dd;
 }
 
+.button-container {
+    display: flex;
+    gap: 15px; /* Adds space between buttons */
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
 .edit, .delete {
     cursor: pointer;
     color: #007bff;
