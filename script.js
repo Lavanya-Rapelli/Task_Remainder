@@ -1,6 +1,20 @@
 // Array to hold reminder objects
 let reminders = [];
 
+// Function to load reminders from local storage
+function loadReminders() {
+    const storedReminders = localStorage.getItem('reminders');
+    if (storedReminders) {
+        reminders = JSON.parse(storedReminders);
+        updateReminderList();
+    }
+}
+
+// Function to save reminders to local storage
+function saveReminders() {
+    localStorage.setItem('reminders', JSON.stringify(reminders));
+}
+
 // Function to add a reminder
 function addReminder() {
     const reminderText = document.getElementById('reminderInput').value;
@@ -14,6 +28,9 @@ function addReminder() {
 
     // Add the reminder to the array
     reminders.push({ text: reminderText, time: reminderTime });
+
+    // Save reminders to local storage
+    saveReminders();
 
     // Clear the input fields
     document.getElementById('reminderInput').value = '';
@@ -73,6 +90,7 @@ function updateReminderList() {
 // Function to delete a reminder
 function deleteReminder(index) {
     reminders.splice(index, 1); // Remove the reminder from the array
+    saveReminders(); // Save updated reminders to local storage
     updateReminderList(); // Refresh the list display
 }
 
@@ -81,9 +99,13 @@ function editReminder(index) {
     const newReminderText = prompt('Edit your reminder:', reminders[index].text);
     if (newReminderText !== null) {
         reminders[index].text = newReminderText;
+        saveReminders(); // Save updated reminders to local storage
         updateReminderList(); // Refresh the list display
     }
 }
+
+// Load reminders from local storage on page load
+loadReminders();
 
 // Attach event listener to the Set Reminder button
 document.getElementById('setReminder').onclick = addReminder;
