@@ -85,10 +85,16 @@ button:hover {
     background-color: #d1e7dd;
 }
 
+.reminder-details {
+    flex: 1;
+    word-wrap: break-word;
+    max-width: 70%;
+}
+
 .button-container {
     display: flex;
-    gap: 15px; /* Adds space between buttons */
-    justify-content: flex-end; /* Align buttons to the right */
+    gap: 15px;
+    justify-content: flex-end;
 }
 
 .edit, .delete {
@@ -113,9 +119,10 @@ button:hover {
         padding: 20px;
     }
 
-    h1{
+    h1 {
         font-size: 1.0em;
-    } 
+    }
+
     .reminders h2 {
         font-size: 0.8em;
     }
@@ -128,5 +135,9 @@ button:hover {
     .form-container {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .reminder-details {
+        max-width: 65%;
     }
 }
