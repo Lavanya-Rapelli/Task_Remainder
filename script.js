@@ -1,81 +1,89 @@
-// Selectors
-const reminderInput = document.getElementById('reminderInput');
-const reminderTime = document.getElementById('reminderTime');
-const setReminderButton = document.getElementById('setReminder');
-const reminderList = document.getElementById('reminderList');
-
+// Array to hold reminder objects
 let reminders = [];
 
-// Function to update the reminder list display
-function updateReminderList() {
-    reminderList.innerHTML = '';
-    reminders.forEach((reminder, index) => {
-        const li = document.createElement('li');
-        li.textContent = `${reminder.text} - ${new Date(reminder.time).toLocaleString()}`;
-        li.appendChild(createEditButton(index));
-        li.appendChild(createDeleteButton(index));
-        reminderList.appendChild(li);
-    });
+// Function to add a reminder
+function addReminder() {
+    const reminderText = document.getElementById('reminderInput').value;
+    const reminderTime = document.getElementById('reminderTime').value;
+
+    // Validate input
+    if (!reminderText || !reminderTime) {
+        alert('Please enter both a reminder and a time.');
+        return;
+    }
+
+    // Add the reminder to the array
+    reminders.push({ text: reminderText, time: reminderTime });
+
+    // Clear the input fields
+    document.getElementById('reminderInput').value = '';
+    document.getElementById('reminderTime').value = '';
+
+    // Update the reminder list
+    updateReminderList();
 }
 
-// Function to create edit button
+// Function to create the edit button
 function createEditButton(index) {
-    const editButton = document.createElement('span');
+    const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
     editButton.className = 'edit';
     editButton.onclick = () => editReminder(index);
     return editButton;
 }
 
-// Function to create delete button
+// Function to create the delete button
 function createDeleteButton(index) {
-    const deleteButton = document.createElement('span');
+    const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.className = 'delete';
     deleteButton.onclick = () => deleteReminder(index);
     return deleteButton;
 }
 
-// Function to set a new reminder
-setReminderButton.addEventListener('click', () => {
-    const text = reminderInput.value.trim();
-    const time = new Date(reminderTime.value).getTime();
+// Function to update the reminder list
+function updateReminderList() {
+    const reminderList = document.getElementById('reminderList');
+    reminderList.innerHTML = '';
 
-    if (text && time > Date.now()) {
-        const reminder = { text, time };
-        reminders.push(reminder);
-        scheduleReminder(reminder);
-        updateReminderList();
-        reminderInput.value = '';
-        reminderTime.value = '';
-    } else {
-        alert("Please enter a valid reminder and time in the future.");
-    }
-});
+    reminders.forEach((reminder, index) => {
+        const li = document.createElement('li');
+        li.className = 'reminder-item';
 
-// Function to schedule the reminder
-function scheduleReminder(reminder) {
-    const timeoutId = setTimeout(() => {
-        alert(`Reminder: ${reminder.text}`);
-        deleteReminder(reminders.indexOf(reminder)); // Remove reminder after it triggers
-    }, reminder.time - Date.now());
-    
-    reminder.timeoutId = timeoutId; // Store timeoutId for later reference
-}
+        // Div for text content and date-time
+        const textDiv = document.createElement('div');
+        textDiv.className = 'reminder-details';
+        textDiv.textContent = `${reminder.text} - ${new Date(reminder.time).toLocaleString()}`;
 
-// Function to edit a reminder
-function editReminder(index) {
-    const reminder = reminders[index];
-    reminderInput.value = reminder.text;
-    reminderTime.value = new Date(reminder.time).toISOString().slice(0, 16);
-    deleteReminder(index); // Remove the reminder for editing
+        // Div for edit and delete buttons
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'button-container';
+        buttonContainer.appendChild(createEditButton(index));
+        buttonContainer.appendChild(createDeleteButton(index));
+
+        // Append all divs to the list item
+        li.appendChild(textDiv);
+        li.appendChild(buttonContainer);
+
+        // Append the list item to the reminder list
+        reminderList.appendChild(li);
+    });
 }
 
 // Function to delete a reminder
 function deleteReminder(index) {
-    clearTimeout(reminders[index].timeoutId); // Cancel the reminder
-    reminders.splice(index, 1); // Remove from the reminders array
-    updateReminderList(); // Refresh the display
+    reminders.splice(index, 1); // Remove the reminder from the array
+    updateReminderList(); // Refresh the list display
 }
 
+// Function to edit a reminder
+function editReminder(index) {
+    const newReminderText = prompt('Edit your reminder:', reminders[index].text);
+    if (newReminderText !== null) {
+        reminders[index].text = newReminderText;
+        updateReminderList(); // Refresh the list display
+    }
+}
 
+// Attach event listener to the Set Reminder button
+document.getElementById('setReminder').onclick = addReminder;

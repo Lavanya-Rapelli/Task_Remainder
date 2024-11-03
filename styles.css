@@ -70,7 +70,7 @@ button:hover {
     padding: 0;
 }
 
-.reminders li {
+.reminder-item {
     background: #e9ecef;
     padding: 12px;
     margin: 5px 0;
@@ -81,7 +81,7 @@ button:hover {
     transition: background-color 0.3s;
 }
 
-.reminders li:hover {
+.reminder-item:hover {
     background-color: #d1e7dd;
 }
 
@@ -99,18 +99,12 @@ button:hover {
 
 .edit, .delete {
     cursor: pointer;
-    color: #007bff;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: text-decoration 0.3s;
 }
 
-.edit:hover {
+.edit:hover, .delete:hover {
     text-decoration: underline;
-    color: #0056b3;
-}
-
-.delete:hover {
-    color: #dc3545;
 }
 
 /* Media Queries for Responsiveness */
