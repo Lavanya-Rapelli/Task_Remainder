@@ -17,7 +17,7 @@ body {
 h1 {
     text-align: center;
     color: #333;
-    font-size: 2.5em;
+    font-size: 1.5em;
 }
 
 .form-container {
@@ -62,7 +62,7 @@ button:hover {
 .reminders h2 {
     text-align: center;
     color:black; /* Blue header for reminders */
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 
 .reminders ul {
