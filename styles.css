@@ -100,35 +100,6 @@ button:hover {
 .delete:hover {
     color: #dc3545;
 }
-.datetime-container {
-    position: relative; /* Create a positioning context */
-}
-
-#reminderTime {
-    width: calc(100% - 30px); /* Adjust width to account for the icon */
-}
-
-.calendar-icon {
-    position: absolute; /* Position the icon */
-    right: 10px; /* Adjust distance from the right */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust vertical position */
-    font-size: 1.2em; /* Size of the icon */
-    pointer-events: none; /* Prevent interaction */
-}
-input[type="datetime-local"] {
-    width: 100%; /* Ensure it takes full width */
-    padding: 10px; /* Padding for touch targets */
-    font-size: 14px; /* Make the text readable */
-    border: 1px solid #ccc; /* Default border */
-    border-radius: 5px; /* Rounded corners */
-    margin-top: 10px; /* Spacing from the above element */
-}
-
-button {
-    margin-top: 15px; /* Spacing above the button */
-}
-
 
 /* Media Queries for Responsiveness */
 @media (max-width: 600px) {
@@ -137,7 +108,7 @@ button {
     }
 
     h1, .reminders h2 {
-        font-size: 1.0em;
+        font-size: 1.3em;
     }
 
     input[type="text"], input[type="datetime-local"], button {
