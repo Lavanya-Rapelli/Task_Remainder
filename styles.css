@@ -26,7 +26,8 @@ h1 {
     gap: 15px; /* Increased gap for better spacing */
 }
 
-input[type="text"], input[type="datetime-local"] {
+input[type="text"],
+input[type="datetime-local"] {
     padding: 12px; /* Increased padding for better touch */
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -34,7 +35,8 @@ input[type="text"], input[type="datetime-local"] {
     transition: border-color 0.3s; /* Smooth transition */
 }
 
-input[type="text"]:focus, input[type="datetime-local"]:focus {
+input[type="text"]:focus,
+input[type="datetime-local"]:focus {
     border-color: #4facfe; /* Highlight on focus */
     outline: none;
 }
@@ -61,7 +63,7 @@ button:hover {
 
 .reminders h2 {
     text-align: center;
-    color:black; /* Blue header for reminders */
+    color: black; /* Blue header for reminders */
     font-size: 1.5em;
 }
 
@@ -81,11 +83,17 @@ button:hover {
     transition: background-color 0.3s; /* Smooth transition on hover */
 }
 
+/* Adjust spacing between edit and delete buttons */
+.reminders li span {
+    margin-left: 10px; /* Added margin for spacing */
+}
+
 .reminders li:hover {
     background-color: #d1e7dd; /* Light green on hover */
 }
 
-.edit, .delete {
+.edit,
+.delete {
     cursor: pointer;
     color: #007bff; /* Blue for edit button */
     font-weight: bold;
@@ -99,4 +107,43 @@ button:hover {
 
 .delete:hover {
     color: #dc3545; /* Red for delete button */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduced padding on smaller screens */
+    }
+
+    h1 {
+        font-size: 1.2em; /* Smaller heading size on mobile */
+    }
+
+    input[type="text"],
+    input[type="datetime-local"],
+    button {
+        font-size: 14px; /* Smaller font size for inputs and buttons */
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+
+    .reminders h2 {
+        font-size: 1.3em; /* Adjusted font size for reminders */
+    }
+
+    .reminders li {
+        padding: 10px; /* Adjust padding for reminders */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.1em; /* Further reduction for very small screens */
+    }
+
+    input[type="text"],
+    input[type="datetime-local"],
+    button {
+        font-size: 12px; /* Further reduction for very small screens */
+        padding: 8px; /* Further reduction for very small screens */
+    }
 }
